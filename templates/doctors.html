@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Doctors </title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  h2 {
+    text-align: center;
+    color: #333;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    background-color: #4CAF50;
+    color: white;
+  }
+
+  input[type="text"] {
+    width: calc(100% - 20px);
+    padding: 8px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+
+  .button-container {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .button-container button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h2> Doctors </h2>
+
+  <table border="1">
+    <tr>
+      <th>D_id</th>
+      <th>Name</th>
+      <th>Specialization</th>
+    </tr>
+    <tr>
+      <td><input type="text" id="d_id"></td>
+      <td><input type="text" id="name"></td>
+      <td><input type="text" id="specialization"></td>
+    </tr>
+  </table>
+
+  <div class="button-container">
+    <button id="saveButton">Save</button>
+  </div>
+</div>
+
+<script>
+  document.getElementById("saveButton").addEventListener("click", function() {
+    var d_id = document.getElementById("d_id").value;
+    var name = document.getElementById("name").value;
+    var specialization = document.getElementById("specialization").value;
+
+    var table = document.querySelector("table");
+    var row = table.insertRow(-1); // Insert row at the end of the table
+
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+
+    cell1.innerHTML = d_id;
+    cell2.innerHTML = name;
+    cell3.innerHTML = specialization;
+
+    // Clear input fields after adding the data to the table
+    document.getElementById("d_id").value = "";
+    document.getElementById("name").value = "";
+    document.getElementById("specialization").value = "";
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+.navbar {
+  width: 100%;
+  background-color: #555;
+  overflow: auto;
+}
+
+.navbar a {
+  float: left;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background-color: #000;
+}
+
+.active {
+  background-color: #04AA6D;
+}
+
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+  }
+}
+</style>
+<body>
+
+<h2>Hospital Management System</h2>
+
+
+<div class="navbar">
+  <a class="active" href="#d0" onclick="d0()" ><i class="fa fa-fw fa-home"></i> Branch</a> 
+  <a href="#d1" onclick="d1()"><i class="fa fa-fw fa-search"></i> Doctors</a> 
+  <a href="#d2" onclick="d2()"><i class="fa fa-fw fa-envelope"></i>Appointments</a>
+ 
+  <a href="#d3" onclick="d3()"><i class="fa fa-fw fa-user"></i> Logout</a>
+</div>
+<div id="d0" style="display: none;">
+  <!DOCTYPE html>
+  <html>
+  <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  /* Add padding to containers */
+  .container {
+    padding: 16px;
+    background-color: white;
+  }
+  
+  /* Full-width input fields */
+  input[type=text], input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+  }
+  
+  input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+  
+  /* Overwrite default styles of hr */
+  hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+  }
+  
+  /* Set a style for the submit button */
+  .registerbtn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+  }
+  
+  .registerbtn:hover {
+    opacity: 1;
+  }
+  
+  /* Add a blue text color to links */
+  a {
+    color: dodgerblue;
+  }
+  
+  /* Set a grey background color and center the text of the "sign in" section */
+  .signin {
+    background-color: #f1f1f1;
+    text-align: center;
+  }
+  </style>
+  </head>
+  <body>
+    <div ng-app="depRApp" ng-controller="depRCtrl">
+  <form action="/action_page.php">
+    <div class="container">
+     
+
+      <h1>Branch </h1>
+     
+      <hr>
+  
+      <label for="internshipid"><b>Branch ID</b></label>
+      <input type="text" placeholder="Enter Branch id" name="bid" id="bid" required>
+
+      <label for="iname"><b>Branch Name </b></label>
+      <input type="text" placeholder="Enter Branch name" name="bname" id="bname" required>
+  
+      <label for="description"><b>Address </b></label><br>
+      <textarea placeholder="Enter Address" name="address" id="address" rows="6" cols="50" required></textarea><br><br>
+      
+      
+  
+      <button type="button" class="registerbtn" id="registerbtn">Insert</button><br><br><br>
+      
+      <div name="bshow" id="bshow" ></div>
+    </div>
+    
+    
+  </form>
+  </div>
+  </body>
+  </html>
+  
+</div>
+<div id="d1" style="display: none;"> 
+  <!DOCTYPE html>
+  <html>
+  <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  /* Add padding to containers */
+  .container {
+    padding: 16px;
+    background-color: white;
+  }
+  
+  /* Full-width input fields */
+  input[type=text], input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+  }
+  
+  input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+  
+  /* Overwrite default styles of hr */
+  hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+  }
+  
+  /* Set a style for the submit button */
+  .registerbtn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+  }
+  
+  .registerbtn:hover {
+    opacity: 1;
+  }
+  
+  /* Add a blue text color to links */
+  a {
+    color: dodgerblue;
+  }
+  
+  /* Set a grey background color and center the text of the "sign in" section */
+  .signin {
+    background-color: #f1f1f1;
+    text-align: center;
+  }
+  </style>
+  </head>
+  <body>
+    
+  <form action="/action_page.php">
+    <div class="container">
+     
+
+      <h1>Doctor Details</h1>
+     
+      <hr>
+  
+      <label for="courseid"><b>Doctor ID</b></label>
+      <input type="text" placeholder="Enter Doctore ID" name="docid" id="docid" required>
+
+      <label for="coursename"><b>Doctor Name</b></label>
+      <input type="text" placeholder="Enter Doctor Name" name="docname" id="docname" required>
+  
+      <label for="cdescription"><b>Specialization </b></label><br>
+      <textarea placeholder="Enter Specialization" name="ds" id="ds" rows="6" cols="50" required></textarea><br><br>
+     <br>
+      Branch:<select name="brid" id="brid"></select>
+
+      <button type="button" class="registerbtn" id="docregisterbtn">Insert</button>
+      
+      <div name="docshow" id="docshow"></div>
+    </div>
+    
+    
+  </form>
+  </div>
+  </body>
+  </html>
+  
+</div>
+
+<div id="d2" style="display: none;">
+  <!DOCTYPE html>
+  <html>
+  <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  /* Add padding to containers */
+  .container {
+    padding: 16px;
+    background-color: white;
+  }
+  
+  /* Full-width input fields */
+  input[type=text], input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+  }
+  
+  input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+  
+  /* Overwrite default styles of hr */
+  hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+  }
+  
+  /* Set a style for the submit button */
+  .registerbtn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+  }
+  
+  .registerbtn:hover {
+    opacity: 1;
+  }
+  
+  /* Add a blue text color to links */
+  a {
+    color: dodgerblue;
+  }
+  
+  /* Set a grey background color and center the text of the "sign in" section */
+  .signin {
+    background-color: #f1f1f1;
+    text-align: center;
+  }
+  </style>
+  </head>
+  <body>
+    
+  <form action="/action_page.php">
+    <div class="container">
+     
+
+      <h1>Appointments </h1>
+     
+      <hr>
+      
+      
+      <div name="appshow" id="appshow"></div>
+    </div>
+    
+    
+  </form>
+  </div>
+  </body>
+  </html>
+</div>
+
+<div id="d3" style="display: none;">
+    Login..
+</div>
+</body>
+<script type="text/javascript">
+    function  d0() {
+        document.getElementById("d0").style.display = "block";
+        document.getElementById("d1").style.display = "none";
+        document.getElementById("d2").style.display = "none";
+        document.getElementById("d3").style.display = "none";
+    }   
+    function  d1() {
+        document.getElementById("d0").style.display = "none";
+        document.getElementById("d1").style.display = "block";
+        document.getElementById("d2").style.display = "none";
+        document.getElementById("d3").style.display = "none";
+    }
+    function d2(){
+        document.getElementById("d0").style.display = "none";
+        document.getElementById("d1").style.display = "none";
+        document.getElementById("d2").style.display = "block";
+        document.getElementById("d3").style.display = "none";
+    }
+    function d3(){
+        document.getElementById("d0").style.display = "none";
+        document.getElementById("d1").style.display = "none";
+        document.getElementById("d2").style.display = "none";
+        document.getElementById("d3").style.display = "block";      
+    }
+</script>
+<script>
+
+  $(document).ready(function() {
+    loadbranches();
+    loaddoctors();
+    loadbranchnames(); 
+    loadappointments();
+    //loadskills();
+    function loadbranches(){
+
+       $.ajax({
+        url: 'http://127.0.0.1:5000/bshow',
+        type: 'POST',
+        success: function(data){
+          $('#bshow').html(data);
+        }
+      });
+    }
+
+    function loadappointments(){
+       $.ajax({
+        url: 'http://127.0.0.1:5000/appallshow',
+        type: 'POST',
+        success: function(data){
+          //alert(data);
+          $('#appshow').html(data);
+        }
+      });
+    }
+
+    function loaddoctors(){
+       $.ajax({
+        url: 'http://127.0.0.1:5000/docshow',
+        type: 'POST',
+        success: function(data){
+          //alert(data);
+          $('#docshow').html(data);
+        }
+      });
+    }
+
+    function loadskills(){
+       $.ajax({
+        url: 'http://127.0.0.1:5000/skillshow',
+        type: 'POST',
+        success: function(data){
+          //alert(data);
+          $('#skillshow').html(data);
+        }
+      });
+    }
+    
+    function loadbranchnames(){
+       $.ajax({
+        url: 'http://127.0.0.1:5000/getbranchnames',
+        type: 'POST',
+        success: function(data){
+          //alert(data);
+          $('#brid').html(data);
+        }
+       });
+    }
+
+
+    $("#skillregisterbtn").click(function(){
+      var skillid = $('#skillid').val();
+      var skillname = $('#skillname').val();
+     
+       $.ajax({
+        url: 'http://127.0.0.1:5000/skillinsert',
+        type: 'POST',
+        data: {skillid: skillid, skillname: skillname},
+        success: function(data){
+          alert(data);
+          loadskills();
+        }
+      });
+    });
+
+
+    $("#registerbtn").click(function(){
+      var bid = $('#bid').val();
+      var bname = $('#bname').val();
+      var address = $('#address').val();
+      
+       $.ajax({
+        url: 'http://127.0.0.1:5000/binsert',
+        type: 'POST',
+        data: {bid:bid,bname:bname,address:address},
+        success: function(data){
+          alert(data);
+          loadbranches();
+        }
+      });
+    });
+
+    $("#docregisterbtn").click(function(){
+      var docid = $('#docid').val();
+      var docname = $('#docname').val();
+      var ds = $('#ds').val();
+      var brid = $('#brid').val();
+      
+       $.ajax({
+        url: 'http://127.0.0.1:5000/docinsert',
+        type: 'POST',
+        data: {docid:docid,docname:docname,ds:ds,brid:brid},
+        success: function(data){
+          alert(data);
+          loaddoctors();
+        }
+      });
+    });
+  
+   
+  });
+
+
+   
+       
+
+    </script>
+
+
+</html> 

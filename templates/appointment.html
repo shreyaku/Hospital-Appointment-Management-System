@@ -1,0 +1,105 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Appointment </title>
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #f2f2f2; 
+    }
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    th {
+        background-color: #4CAF50;
+        color: white;
+    }
+    /* Input field style */
+    input[type="text"], input[type="date"], input[type="time"] {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+    }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<h2> <center>Appointment</center> </h2>
+
+<table border="1">
+  <tr>
+    
+    <th>D_name</th>
+    <th>Date</th>
+    <th>Time</th>
+  </tr>
+  <tr>
+    
+    <td><select id="d_name"></select></td>
+    <td><input type="date" id="date"></td>
+    <td><input type="time" id="time"></td>
+  </tr>
+</table>
+
+<button id="addAppointment">Add Appointment</button>
+<br><br><br>
+<h3>My Appointments</h3>
+<div id="appshow"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<script>
+
+    $(document).ready(function() {
+        loaddoctornames(); 
+        loadappointments();
+        function loaddoctornames(){
+       $.ajax({
+        url: 'http://127.0.0.1:5000/getdoctornames',
+        type: 'POST',
+        success: function(data){
+          //alert(data);
+          $('#d_name').html(data);
+        }
+       });
+    }
+    function loadappointments(){
+       $.ajax({
+        url: 'http://127.0.0.1:5000/appshow',
+        type: 'POST',
+        success: function(data){
+          //alert(data);
+          $('#appshow').html(data);
+        }
+      });
+    }
+  
+      $("#addAppointment").click(function(){
+       
+        var d_name = $('#d_name').val();
+        var date = $('#date').val();
+        var time = $('#time').val();
+        
+        
+         $.ajax({
+          url: 'http://127.0.0.1:5000/makeappointment',
+          type: 'POST',
+          data: {d_name: d_name,date:date,time:time},
+          success: function(data){
+            alert(data)
+            loadappointments();
+          }
+        });
+      });
+    
+  
+    });
+  </script>
+
+
+</body>
+</html>
